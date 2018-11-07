@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/showertimer_button"
         android:layout_width="372dp"
         android:layout_height="60dp"
         android:layout_marginStart="6dp"
@@ -17,13 +17,13 @@
         android:layout_marginRight="6dp"
         android:layout_marginBottom="10dp"
         android:text="Shower timer"
-        app:layout_constraintBottom_toTopOf="@+id/button4"
+        app:layout_constraintBottom_toTopOf="@+id/data_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/ecoreminders_button" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/data_button"
         android:layout_width="372dp"
         android:layout_height="60dp"
         android:layout_marginStart="6dp"
@@ -36,10 +36,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintTop_toBottomOf="@+id/showertimer_button" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/ecoreminders_button"
         android:layout_width="372dp"
         android:layout_height="60dp"
         android:layout_marginStart="3dp"
@@ -47,13 +47,13 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:text="ecoReminders"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintBottom_toTopOf="@+id/showertimer_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/homescreen_picture" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/homescreen_picture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="65dp"
@@ -61,7 +61,7 @@
         android:layout_marginEnd="65dp"
         android:layout_marginRight="65dp"
         android:layout_marginBottom="25dp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/ecoreminders_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

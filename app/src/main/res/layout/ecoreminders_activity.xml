@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity2">
+    tools:context=".EcoReminders">
 
     <TextView
         android:id="@+id/textView"
@@ -17,13 +17,14 @@
         android:layout_marginRight="25dp"
         android:layout_marginBottom="26dp"
         android:text="ecoReminders"
-        app:layout_constraintBottom_toTopOf="@+id/button5"
+        app:layout_constraintBottom_toTopOf="@+id/appliances_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="spread_inside" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/appliances_button"
         android:layout_width="311dp"
         android:layout_height="60dp"
         android:layout_marginStart="11dp"
@@ -31,13 +32,13 @@
         android:layout_marginTop="26dp"
         android:layout_marginBottom="15dp"
         android:text="Appliances"
-        app:layout_constraintBottom_toTopOf="@+id/button7"
+        app:layout_constraintBottom_toTopOf="@+id/trash_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/trash_button"
         android:layout_width="311dp"
         android:layout_height="60dp"
         android:layout_marginStart="25dp"
@@ -47,13 +48,13 @@
         android:layout_marginRight="25dp"
         android:layout_marginBottom="15dp"
         android:text="Trash"
-        app:layout_constraintBottom_toTopOf="@+id/button8"
+        app:layout_constraintBottom_toTopOf="@+id/chores_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button5" />
+        app:layout_constraintTop_toBottomOf="@+id/appliances_button" />
 
     <Button
-        android:id="@+id/button8"
+        android:id="@+id/chores_button"
         android:layout_width="311dp"
         android:layout_height="60dp"
         android:layout_marginStart="25dp"
@@ -66,6 +67,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button7" />
+        app:layout_constraintTop_toBottomOf="@+id/trash_button" />
 
 </android.support.constraint.ConstraintLayout>

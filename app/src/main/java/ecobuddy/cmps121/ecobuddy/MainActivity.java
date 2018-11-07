@@ -11,49 +11,52 @@ public class MainActivity extends AppCompatActivity {
     Button button;
     Button button2;
     Button button3;
-    Button button4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        button = (Button) findViewById(R.id.button);
+        button = (Button) findViewById(R.id.ecoreminders_button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openActivity2();
+                ecoReminders_nav();
 
 
             }
         });
 
-        button2 = (Button) findViewById(R.id.button2);
+        button2 = (Button) findViewById(R.id.showertimer_button);
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openActivity3();
-
+                showerTimer_nav();
 
             }
         });
 
-
+        button3 = (Button) findViewById(R.id.data_button);
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dataAnalytics_nav();
+            }
+        });
     }
 
-    public void openActivity2() {
-        Intent intent = new Intent(this, Activity2.class);
+    public void ecoReminders_nav() {
+        Intent intent = new Intent(this, EcoReminders.class);
         startActivity(intent);
-
     }
 
-    public void openActivity3() {
-        Intent intent = new Intent(this, Activity3.class);
+    public void showerTimer_nav() {
+        Intent intent = new Intent(this, ShowerTimer.class);
         startActivity(intent);
-
     }
 
-
-
-
+    public void dataAnalytics_nav() {
+        Intent intent = new Intent(this, DataAnalytics.class);
+        startActivity(intent);
+    }
 }

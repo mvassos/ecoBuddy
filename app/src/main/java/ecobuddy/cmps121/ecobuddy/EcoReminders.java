@@ -6,20 +6,20 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class Activity2 extends AppCompatActivity {
+public class EcoReminders extends AppCompatActivity {
 
-    Button button5;
+    Button app_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_2);
+        setContentView(R.layout.ecoreminders_activity);
 
-        button5 = (Button) findViewById(R.id.button5);
-        button5.setOnClickListener(new View.OnClickListener() {
+        app_button = (Button) findViewById(R.id.appliances_button);
+        app_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openActivity5();
+                appliances_nav();
 
 
             }
@@ -29,8 +29,8 @@ public class Activity2 extends AppCompatActivity {
 
     }
 
-    public void openActivity5() {
-        Intent intent = new Intent(this, Activity5.class);
+    public void appliances_nav() {
+        Intent intent = new Intent(this, ApplianceReminder.class);
         startActivity(intent);
 
     }

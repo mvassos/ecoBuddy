@@ -18,8 +18,10 @@
         </activity>
         <activity android:name=".ShowerTimer" />
         <activity android:name=".Activity2" />
-        <activity android:name=".Activity3" />
+        <activity android:name=".DataAnalytics" />
         <activity android:name=".Activity5" />
+        <activity android:name=".EcoReminders" />
+        <activity android:name=".ApplianceReminder" />
     </application>
 
 </manifest>
