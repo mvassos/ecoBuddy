@@ -1,15 +1,18 @@
 package ecobuddy.cmps121.ecobuddy;
 
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
+import android.widget.Toast;
 
 public class ShowerTimer extends AppCompatActivity {
 
     private Chronometer chronometer;
     private boolean running;
+    private long pauseOffset;
     Button start_b, stop_b, log_b;
 
     @Override
@@ -29,7 +32,7 @@ public class ShowerTimer extends AppCompatActivity {
         stop_b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                stopChronometer(v);
+                pauseChronometer(v);
             }
         });
 
@@ -37,28 +40,43 @@ public class ShowerTimer extends AppCompatActivity {
         log_b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                logData();
+                logData(v);
             }
         });
     }
 
     public void startChronometer(View v){
         if(!running){
+            chronometer.setBase(SystemClock.elapsedRealtime() - pauseOffset);
             chronometer.start();
             running = true;
 
         }
     }
 
-    public void stopChronometer(View v){
+    public void pauseChronometer(View v){
         if(running){
             chronometer.stop();
+            pauseOffset = SystemClock.elapsedRealtime() - chronometer.getBase();
             running = false;
 
         }
     }
 
-    private void logData() {
+    public void resetChronometer(View v){
+        pauseChronometer(v);
+        chronometer.setBase(SystemClock.elapsedRealtime());
+        pauseOffset = 0;
 
+    }
+
+    private void logData(View v) {
+        if((SystemClock.elapsedRealtime() - chronometer.getBase()) <= 37000){
+            Toast.makeText(this,"Shower Must Be A Realistic Time", Toast.LENGTH_LONG).show();
+        }
+        else{
+            //do backend work and show the user a log successfull messgae
+            Toast.makeText(this,"Time Recorded Successfully", Toast.LENGTH_LONG).show();
+        }
     }
 }
