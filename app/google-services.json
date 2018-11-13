@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "614111228059",
+    "firebase_url": "https://ecobuddy-d1006.firebaseio.com",
+    "project_id": "ecobuddy-d1006",
+    "storage_bucket": "ecobuddy-d1006.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:614111228059:android:618e509fafa227e9",
+        "android_client_info": {
+          "package_name": "ecobuddy.cmps121.ecobuddy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "614111228059-u6kqhr66l3hbvqsrjj9ck39vhqnpgot7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVMa4RpumQUOKY8OBBpGFkB6Z1HZeaXtA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
