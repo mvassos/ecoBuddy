@@ -28,7 +28,7 @@ public class LoginActivity extends AppCompatActivity {
     private SignInButton googleBtn;
 
     private static final int RC_SIGN_IN = 2121;
-    private String TAG = "login";
+    private String TAG = "LoginTest";
 
     private GoogleSignInClient mGoogleSignInClient;
     private FirebaseAuth mAuth;
