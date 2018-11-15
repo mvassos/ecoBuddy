@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ecobuddy.cmps121.ecobuddy">
 
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -25,13 +25,13 @@
         <activity android:name=".EcoReminders" />
         <activity android:name=".ApplianceReminder" />
 
-        <service
-            android:name=".FirebaseMessagingService">
+        <service android:name=".FirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 
+        <activity android:name=".LoginActivity"></activity>
     </application>
 
 </manifest>
