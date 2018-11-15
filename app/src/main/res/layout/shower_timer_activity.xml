@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/linear_layout_shower"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,8 +10,7 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingTop="32dp"
-    android:gravity="center_horizontal"
-     >
+    android:gravity="center_horizontal">
 
     <Chronometer
         android:id="@+id/timer_shower"
@@ -75,11 +74,17 @@
         android:layout_height="wrap_content"
         android:paddingTop="16dp"
         android:text="You waste about 2 gallons per minute!"/>
+
     <TextView
+        android:id="@+id/textview1_shower"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="16dp"
-        android:text="Start timer as soon as the water turns on."/>
+        android:text="Start timer as soon as the water turns on." />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/money_nozzle"/>
 
 
 </LinearLayout>
