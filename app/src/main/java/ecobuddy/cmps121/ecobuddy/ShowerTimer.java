@@ -8,6 +8,13 @@ import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class ShowerTimer extends AppCompatActivity {
 
     private Chronometer chronometer;
@@ -15,10 +22,15 @@ public class ShowerTimer extends AppCompatActivity {
     private long pauseOffset;
     Button start_b, stop_b, log_b;
 
+    private FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.shower_timer_activity);
+
+        mAuth = FirebaseAuth.getInstance();
+
         chronometer = findViewById(R.id.timer_shower);
         start_b = findViewById(R.id.button_start_timer);
         start_b.setOnClickListener(new View.OnClickListener() {
@@ -75,7 +87,17 @@ public class ShowerTimer extends AppCompatActivity {
             Toast.makeText(this,"Shower Must Be A Realistic Time", Toast.LENGTH_LONG).show();
         }
         else{
-            //do backend work and show the user a log successfull messgae
+            String user_id = mAuth.getCurrentUser().getUid();
+            DatabaseReference user_db = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id);
+
+            long time = (SystemClock.elapsedRealtime() - chronometer.getBase());
+
+            Map newPost = new HashMap();
+
+            newPost.put("time", time);
+
+            user_db.setValue(newPost);
+
             Toast.makeText(this,"Time Recorded Successfully", Toast.LENGTH_LONG).show();
         }
     }
