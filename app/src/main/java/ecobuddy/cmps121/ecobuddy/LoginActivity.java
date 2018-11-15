@@ -84,6 +84,10 @@ public class LoginActivity extends AppCompatActivity {
                 // ...
             }
         }
+
+        // Added this to take us to main after sign in
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
         finish();
     }
 
