@@ -64,5 +64,22 @@
         android:text="LOG DATA"
         android:onClick="logData"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:text="Tips:"
+        android:paddingTop="32dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="16dp"
+        android:text="You waste about 2 gallons per minute!"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="16dp"
+        android:text="Start timer as soon as the water turns on."/>
+
 
 </LinearLayout>
