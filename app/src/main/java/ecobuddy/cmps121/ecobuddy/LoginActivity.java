@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -26,7 +27,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private SignInButton googleBtn;
 
-    private static final int RC_SIGN_IN = 1;
+    private static final int RC_SIGN_IN = 2121;
     private String TAG = "login";
 
     private GoogleSignInClient mGoogleSignInClient;
@@ -38,7 +39,6 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         googleBtn = (SignInButton) findViewById(R.id.button_google);
-        mAuth = FirebaseAuth.getInstance();
 
         googleBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,8 +56,27 @@ public class LoginActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
+    }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        updateUI(currentUser);
+    }
 
+    private void updateUI(FirebaseUser user){
+        if(user != null){
+            //if a user is already signed in!
+            Toast.makeText(this, "Welcome: "+user.getEmail(), Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
+        else{
+            Toast.makeText(this, "Failed Login", Toast.LENGTH_LONG).show();
+
+        }
     }
 
 
@@ -81,14 +100,11 @@ public class LoginActivity extends AppCompatActivity {
             } catch (ApiException e) {
                 // Google Sign In failed, update UI appropriately
                 Log.w(TAG, "Google sign in failed", e);
+                updateUI(null);
                 // ...
             }
         }
 
-        // Added this to take us to main after sign in
-        Intent i = new Intent(this, MainActivity.class);
-        startActivity(i);
-        finish();
     }
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
@@ -103,12 +119,13 @@ public class LoginActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            //updateUI(user);
+                            //should update and take us to Main Activity!
+                            updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
                             Snackbar.make(findViewById(R.id.login_layout), "Authentication Failed.", Snackbar.LENGTH_SHORT).show();
-                            //updateUI(null);
+                            updateUI(null);
                         }
 
                         // ...

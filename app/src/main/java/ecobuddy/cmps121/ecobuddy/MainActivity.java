@@ -34,25 +34,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
-                .requestEmail()
-                .build();
-
         mAuth = FirebaseAuth.getInstance();
-        mGoogleSignInClient = GoogleSignIn.getClient(this,gso);
-
         FirebaseUser user = mAuth.getCurrentUser();
+
         username = (TextView) findViewById(R.id.TextView_username);
-
-
         button = (Button) findViewById(R.id.ecoreminders_button);
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ecoReminders_nav();
-
-
             }
         });
 
@@ -84,7 +75,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void onStart(){
         super.onStart();
-
         FirebaseUser currentUser = mAuth.getCurrentUser();
         updateUserInfo(currentUser);
     }
@@ -96,8 +86,8 @@ public class MainActivity extends AppCompatActivity {
         }
         else{
             username.setText("Sign In Required!");
-            Intent intent = new Intent(this, LoginActivity.class);
-            startActivity(intent);
+           // Intent intent = new Intent(this, LoginActivity.class);
+          //  startActivity(intent);
         }
 
     }

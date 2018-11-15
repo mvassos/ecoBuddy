@@ -10,6 +10,14 @@
     android:orientation="vertical"
     android:gravity="center">
 
+    <TextView
+        android:id="@+id/TextView_greeting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="32dp"
+        android:text="EcoBuddy Login"
+        android:textSize="24sp" />
+
     <com.google.android.gms.common.SignInButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
