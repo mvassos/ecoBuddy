@@ -27,18 +27,19 @@
 
     <HorizontalScrollView
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="573dp"
         android:layout_gravity="center"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        tools:layout_editor_absoluteY="-6dp">
 
 
         <LinearLayout
             android:id="@+id/main_linearlayout"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
             android:gravity="center_horizontal"
-            android:orientation="vertical"
-            android:layout_gravity="bottom">
+            android:orientation="vertical">
 
             <Button
 
@@ -77,10 +78,10 @@
                 android:id="@+id/ecoreminders_button"
                 android:layout_width="372dp"
                 android:layout_height="60dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="3dp"
                 android:layout_marginStart="3dp"
+                android:layout_marginLeft="3dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginBottom="10dp"
                 android:text="ecoReminders"
                 app:layout_constraintBottom_toTopOf="@+id/showertimer_button"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -92,10 +93,10 @@
                 android:id="@+id/signout_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
                 android:text="sign out"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

@@ -69,14 +69,16 @@ public class LoginActivity extends AppCompatActivity {
     private void updateUI(FirebaseUser user){
         if(user != null){
             //if a user is already signed in!
-            Toast.makeText(this, "Welcome: "+user.getEmail(), Toast.LENGTH_LONG).show();
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
+            Toast.makeText(this, "Welcome: " + user.getEmail(), Toast.LENGTH_LONG).show();
+
         }
         else{
             Toast.makeText(this, "Failed Login", Toast.LENGTH_LONG).show();
 
+
         }
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
 
