@@ -70,15 +70,18 @@ public class LoginActivity extends AppCompatActivity {
         if(user != null){
             //if a user is already signed in!
             Toast.makeText(this, "Welcome: " + user.getEmail(), Toast.LENGTH_LONG).show();
+            //only change activity to main once a login is complete
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+
+            finish();
 
         }
         else{
-            Toast.makeText(this, "Failed Login", Toast.LENGTH_LONG).show();
-
+            Toast.makeText(this, "Please Login", Toast.LENGTH_LONG).show();
 
         }
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+
     }
 
 
