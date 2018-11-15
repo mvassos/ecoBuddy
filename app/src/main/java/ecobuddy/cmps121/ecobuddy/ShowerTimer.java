@@ -83,7 +83,7 @@ public class ShowerTimer extends AppCompatActivity {
     }
 
     private void logData(View v) {
-        if((SystemClock.elapsedRealtime() - chronometer.getBase()) <= 37000){
+        if((SystemClock.elapsedRealtime() - chronometer.getBase()) <= 10000){
             Toast.makeText(this,"Shower Must Be A Realistic Time", Toast.LENGTH_LONG).show();
         }
         else{
@@ -97,6 +97,8 @@ public class ShowerTimer extends AppCompatActivity {
             newPost.put("time", time);
 
             user_db.setValue(newPost);
+
+            resetChronometer(v);
 
             Toast.makeText(this,"Time Recorded Successfully", Toast.LENGTH_LONG).show();
         }
