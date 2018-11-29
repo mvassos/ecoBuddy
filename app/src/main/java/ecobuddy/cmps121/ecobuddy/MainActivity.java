@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     Button button2;
     Button button3;
     Button signout;
+    Button buttonBill;
 
     TextView username;
 
@@ -77,6 +78,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
+        buttonBill = (Button) findViewById(R.id.button_enterBills);
+        buttonBill.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                billEnter_nav();
+            }
+        });
+
         signout = (Button) findViewById(R.id.signout_button);
         signout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,6 +129,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void dataAnalytics_nav() {
         Intent intent = new Intent(this, DataAnalytics.class);
+        startActivity(intent);
+    }
+
+    public void billEnter_nav() {
+        Intent intent = new Intent(this, EnterBills.class);
         startActivity(intent);
     }
 

@@ -59,6 +59,12 @@
                 app:layout_constraintTop_toBottomOf="@+id/ecoreminders_button" />
 
             <Button
+                android:id="@+id/button_enterBills"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Enter Bill" />
+
+            <Button
                 android:id="@+id/data_button"
                 android:layout_width="372dp"
                 android:layout_height="60dp"
