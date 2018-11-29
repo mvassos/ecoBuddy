@@ -96,7 +96,7 @@ public class ShowerTimer extends AppCompatActivity {
 
             newPost.put("time", time);
 
-            user_db.setValue(newPost);
+            user_db.updateChildren(newPost);
 
             resetChronometer(v);
 
