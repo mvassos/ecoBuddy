@@ -18,7 +18,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
 
         <service android:name=".FirebaseMessagingService">
             <intent-filter>
@@ -52,7 +52,8 @@
         <activity android:name=".DataAnalytics" />
         <activity android:name=".EcoReminders" />
         <activity android:name=".ApplianceReminder" />
-        <activity android:name=".EnterBills"></activity>
+        <activity android:name=".EnterBills" />
+        <activity android:name=".ShowerData"></activity>
     </application>
 
 </manifest>
