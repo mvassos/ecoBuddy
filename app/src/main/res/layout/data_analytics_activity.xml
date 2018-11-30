@@ -12,15 +12,30 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Most Recent Shower Time: "/>
+        android:text="View Data On"/>
 
-    <TextView
-        android:id="@+id/TextView_showerTime"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="16dp"
-        android:textSize="24sp"
-        android:text=" seconds"
-        />
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingTop="16dp">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_view_showerData"
+            android:text="Shower"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_view_billData"
+            android:text="Bills"/>
+
+
+    </LinearLayout>
+
+
 
 </LinearLayout>

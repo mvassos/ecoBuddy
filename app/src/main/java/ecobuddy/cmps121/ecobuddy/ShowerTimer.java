@@ -1,16 +1,21 @@
 package ecobuddy.cmps121.ecobuddy;
 
 import android.os.SystemClock;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,7 +27,12 @@ public class ShowerTimer extends AppCompatActivity {
     private long pauseOffset;
     Button start_b, stop_b, log_b;
 
+    private int total_times;
+
     private FirebaseAuth mAuth;
+    private DatabaseReference user_db;
+
+    private final String TAG = "showerTimer";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +40,7 @@ public class ShowerTimer extends AppCompatActivity {
         setContentView(R.layout.shower_timer_activity);
 
         mAuth = FirebaseAuth.getInstance();
+        user_db = FirebaseDatabase.getInstance().getReference("Users");
 
         chronometer = findViewById(R.id.timer_shower);
         start_b = findViewById(R.id.button_start_timer);
@@ -55,6 +66,30 @@ public class ShowerTimer extends AppCompatActivity {
                 logData(v);
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        final String uid = FirebaseAuth.getInstance().getUid();
+        Log.d(TAG, "onStart: uid = "+uid);
+
+
+        user_db.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                total_times = dataSnapshot.child(uid).child("totaltimes").getValue(Integer.class);
+                Log.d(TAG, "onDataChange: total times = "+total_times);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                throw databaseError.toException();
+            }
+        });
+
+
     }
 
     public void startChronometer(View v){
@@ -83,6 +118,7 @@ public class ShowerTimer extends AppCompatActivity {
     }
 
     private void logData(View v) {
+
         if((SystemClock.elapsedRealtime() - chronometer.getBase()) <= 10000){
             Toast.makeText(this,"Shower Must Be A Realistic Time", Toast.LENGTH_LONG).show();
         }
@@ -94,9 +130,14 @@ public class ShowerTimer extends AppCompatActivity {
 
             Map newPost = new HashMap();
 
-            newPost.put("time", time);
+            newPost.put(""+total_times, time);
+            user_db.child("times").updateChildren(newPost);
 
-            user_db.updateChildren(newPost);
+            total_times++;
+            Map newTimes = new HashMap();
+
+            newTimes.put("totaltimes",total_times);
+            user_db.updateChildren(newTimes);
 
             resetChronometer(v);
 

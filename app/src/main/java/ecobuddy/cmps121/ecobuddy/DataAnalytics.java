@@ -40,7 +40,7 @@ public class DataAnalytics extends AppCompatActivity {
 
     }
 
-    @Override
+    /*@Override
     protected void onStart() {
         super.onStart();
 
@@ -60,5 +60,5 @@ public class DataAnalytics extends AppCompatActivity {
                 throw databaseError.toException();
             }
         });
-    }
+    }*/
 }
