@@ -2,4 +2,11 @@
     <string name="app_name">ecoBuddy</string>
     <string name="title_activity_maps">Map</string>
     <string name="google_maps_key">AIzaSyBVMa4RpumQUOKY8OBBpGFkB6Z1HZeaXtA</string>
+
+    <string-array name="spinner_elements">
+        <item>Appliances</item>
+        <item>Bills</item>
+        <item>Chores</item>
+        <item>Trash</item>
+    </string-array>
 </resources>

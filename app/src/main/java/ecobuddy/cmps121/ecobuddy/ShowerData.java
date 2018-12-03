@@ -36,7 +36,7 @@ public class ShowerData extends AppCompatActivity {
         user_db = FirebaseDatabase.getInstance().getReference("Users");
 
         graph = findViewById(R.id.GraphView_shower);
-        series = new LineGraphSeries<DataPoint>();
+        series = new LineGraphSeries<>();
 
 
     }

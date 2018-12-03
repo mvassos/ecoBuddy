@@ -48,14 +48,13 @@
 
             <Button
                 android:id="@+id/chores_button"
-                android:layout_width="wrap_content"
+                android:layout_width="107dp"
                 android:layout_height="wrap_content"
-                android:text="Chores"
-              />
+                android:text="Chores" />
 
             <Button
                 android:id="@+id/set_bill_button"
-                android:layout_width="wrap_content"
+                android:layout_width="107dp"
                 android:layout_height="wrap_content"
                 android:text="Set Bill Reminder" />
 
