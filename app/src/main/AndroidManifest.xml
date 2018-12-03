@@ -10,6 +10,8 @@
          location permissions for the 'MyLocation' functionality. 
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
 
     <application
         android:allowBackup="true"
@@ -49,6 +51,7 @@
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
         <activity android:name=".ShowerTimer" />
+        <activity android:name=".SetBill"/>
         <activity android:name=".DataAnalytics" />
         <activity android:name=".EcoReminders" />
         <activity android:name=".ApplianceReminder" />

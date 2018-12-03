@@ -32,12 +32,11 @@
                 android:layout_marginRight="8dp"
                 android:text="Appliances"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:layout_editor_absoluteY="113dp" />
+                app:layout_constraintStart_toStartOf="parent" />
 
             <Button
                 android:id="@+id/trash_button"
-                android:layout_width="wrap_content"
+                android:layout_width="107dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
@@ -45,16 +44,20 @@
                 android:layout_marginRight="8dp"
                 android:text="trash "
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:layout_editor_absoluteY="178dp" />
+                app:layout_constraintStart_toStartOf="parent" />
 
             <Button
                 android:id="@+id/chores_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Chores"
-                tools:layout_editor_absoluteX="156dp"
-                tools:layout_editor_absoluteY="288dp" />
+              />
+
+            <Button
+                android:id="@+id/set_bill_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Set Bill Reminder" />
 
         </LinearLayout>
     </HorizontalScrollView>

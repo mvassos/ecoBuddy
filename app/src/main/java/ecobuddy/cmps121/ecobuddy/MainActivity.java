@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
     public void updateUserInfo(FirebaseUser user){
 
         if(user != null){
-            username.setText("Username: "+user.getEmail());
+            username.setText("Username: "+ user.getEmail());
         }
         else{
             Toast.makeText(this, "Signed Out", Toast.LENGTH_LONG).show();

@@ -8,7 +8,7 @@ import android.widget.Button;
 
 public class EcoReminders extends AppCompatActivity {
 
-    Button app_btn, maps_btn, trash_btn, chores_btn;
+    Button app_btn, bill_btn, trash_btn, chores_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,9 +23,6 @@ public class EcoReminders extends AppCompatActivity {
             }
         });
 
-
-
-
         trash_btn = (Button) findViewById(R.id.trash_button);
         trash_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,7 +30,6 @@ public class EcoReminders extends AppCompatActivity {
 //                trash_nav();
             }
         });
-
 
         chores_btn = (Button) findViewById(R.id.chores_button);
         chores_btn.setOnClickListener(new View.OnClickListener() {
@@ -43,8 +39,19 @@ public class EcoReminders extends AppCompatActivity {
             }
         });
 
+        bill_btn = (Button) findViewById(R.id.set_bill_button);
+        bill_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setBill_nav();
+            }
+        });
 
+    }
 
+    public void setBill_nav() {
+        Intent i = new Intent(this, SetBill.class);
+        startActivity(i);
     }
 
     public void appliances_nav() {
