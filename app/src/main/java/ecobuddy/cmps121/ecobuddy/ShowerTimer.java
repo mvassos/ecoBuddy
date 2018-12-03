@@ -79,7 +79,12 @@ public class ShowerTimer extends AppCompatActivity {
         user_db.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                total_times = dataSnapshot.child(uid).child("totaltimes").getValue(Integer.class);
+
+                if (dataSnapshot.child(uid).child("totaltimes") != null) {
+                    total_times = dataSnapshot.child(uid).child("totaltimes").getValue(Integer.class);
+                } else {
+                    total_times = 0;
+                }
                 Log.d(TAG, "onDataChange: total times = "+total_times);
             }
 

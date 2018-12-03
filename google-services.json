@@ -1,0 +1,66 @@
+{
+  "project_info": {
+    "project_number": "614111228059",
+    "firebase_url": "https://ecobuddy-d1006.firebaseio.com",
+    "project_id": "ecobuddy-d1006",
+    "storage_bucket": "ecobuddy-d1006.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:614111228059:android:618e509fafa227e9",
+        "android_client_info": {
+          "package_name": "ecobuddy.cmps121.ecobuddy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "614111228059-hn1vciojlvd1ju38gmnd8pgubs660tsh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ecobuddy.cmps121.ecobuddy",
+            "certificate_hash": "b3e155410bc11896068224c5e5042a92def04443"
+          }
+        },
+        {
+          "client_id": "614111228059-jepsa4qupa4e5o1ob5jk924vea7arine.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ecobuddy.cmps121.ecobuddy",
+            "certificate_hash": "fc5654171f688a1eef88f978f8d12f02d856344d"
+          }
+        },
+        {
+          "client_id": "614111228059-u6kqhr66l3hbvqsrjj9ck39vhqnpgot7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVMa4RpumQUOKY8OBBpGFkB6Z1HZeaXtA"
+        },
+        {
+          "current_key": "AIzaSyChcCu1N0OV6hH7hWvybEQvHjgssOsPvIs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "614111228059-u6kqhr66l3hbvqsrjj9ck39vhqnpgot7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
