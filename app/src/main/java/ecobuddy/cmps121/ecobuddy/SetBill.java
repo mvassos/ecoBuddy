@@ -17,7 +17,7 @@ public class SetBill extends AppCompatActivity {
         Intent intent = new Intent(Intent.ACTION_EDIT);
         intent.setData(CalendarContract.Events.CONTENT_URI);
         intent.putExtra("rrule", "FREQ=MONTHLY/");
-        intent.putExtra("title", "A Test Event from android app");
+        intent.putExtra("title", "Enter bill name here");
         intent.putExtra("allDay", true);
         startActivity(intent);
         finish();
