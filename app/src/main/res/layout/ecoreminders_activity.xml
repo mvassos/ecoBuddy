@@ -26,13 +26,15 @@
                 android:id="@+id/send_message_btn"
                 android:layout_width="107dp"
                 android:layout_height="wrap_content"
-                android:text="Send Message" />
+                android:text="Send Message"
+                android:textColor="@color/ForestGreen" />
 
             <Button
                 android:id="@+id/set_bill_button"
                 android:layout_width="107dp"
                 android:layout_height="wrap_content"
-                android:text="Set Bill Reminder" />
+                android:text="Set Bill Reminder"
+                android:textColor="@color/ForestGreen" />
 
         </LinearLayout>
     </HorizontalScrollView>

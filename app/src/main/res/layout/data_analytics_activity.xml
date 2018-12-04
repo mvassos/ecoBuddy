@@ -22,16 +22,18 @@
         android:paddingTop="16dp">
 
         <Button
+            android:id="@+id/button_view_showerData"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/button_view_showerData"
-            android:text="Shower"/>
+            android:text="Shower"
+            android:textColor="@color/ForestGreen" />
 
         <Button
+            android:id="@+id/button_view_billData"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/button_view_billData"
-            android:text="Bills"/>
+            android:text="Bills"
+            android:textColor="@color/ForestGreen" />
 
 
     </LinearLayout>
