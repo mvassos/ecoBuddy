@@ -144,6 +144,8 @@ public class ShowerTimer extends AppCompatActivity {
             newTimes.put("totaltimes",total_times);
             user_db.updateChildren(newTimes);
 
+            Log.d(TAG, "logData: about to reset");
+            
             resetChronometer(v);
 
             Toast.makeText(this,"Time Recorded Successfully", Toast.LENGTH_LONG).show();

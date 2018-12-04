@@ -14,6 +14,8 @@
         android:text="Shower Data"/>
 
     <com.jjoe64.graphview.GraphView
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
         android:id="@+id/GraphView_shower"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
