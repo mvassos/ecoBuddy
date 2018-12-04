@@ -83,6 +83,7 @@ public class ShowerTimer extends AppCompatActivity {
                 if (dataSnapshot.child(uid).child("totaltimes") != null) {
                     total_times = dataSnapshot.child(uid).child("totaltimes").getValue(Integer.class);
                 } else {
+                    user_db.child(uid).child("totaltimes").setValue(0);
                     total_times = 0;
                 }
                 Log.d(TAG, "onDataChange: total times = "+total_times);
