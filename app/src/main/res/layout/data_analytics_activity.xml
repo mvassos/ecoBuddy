@@ -25,6 +25,7 @@
             android:id="@+id/button_view_showerData"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/oval_button_shape"
             android:text="Shower"
             android:textColor="@color/ForestGreen" />
 
@@ -32,6 +33,7 @@
             android:id="@+id/button_view_billData"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/oval_button_shape"
             android:text="Bills"
             android:textColor="@color/ForestGreen" />
 
