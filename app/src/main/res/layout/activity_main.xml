@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -44,6 +44,7 @@
             <Button
 
                 android:id="@+id/showertimer_button"
+                android:textColor="@color/ForestGreen"
                 android:layout_width="372dp"
                 android:layout_height="60dp"
                 android:layout_marginStart="6dp"
@@ -60,12 +61,14 @@
 
             <Button
                 android:id="@+id/button_enterBills"
+                android:textColor="@color/ForestGreen"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Enter Bill" />
 
             <Button
                 android:id="@+id/data_button"
+                android:textColor="@color/ForestGreen"
                 android:layout_width="372dp"
                 android:layout_height="60dp"
                 android:layout_marginStart="6dp"
@@ -82,6 +85,7 @@
 
             <Button
                 android:id="@+id/ecoreminders_button"
+                android:textColor="@color/ForestGreen"
                 android:layout_width="372dp"
                 android:layout_height="60dp"
                 android:layout_marginStart="3dp"
@@ -96,6 +100,7 @@
                 app:layout_constraintTop_toBottomOf="parent" />
 
             <Button
+                android:textColor="@color/ForestGreen"
                 android:id="@+id/signout_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -115,4 +120,4 @@
 
 
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>

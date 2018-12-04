@@ -8,25 +8,23 @@ import android.content.Context;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 
 public class ApplianceReminder extends AppCompatActivity {
-    EditText ed1;
-    EditText ed2;
-    EditText ed3;
-    Button button6;
+    EditText body_et;
+    Button snd_msg;
+    Spinner choices;
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.appliance_reminder_activity);
 
-        ed1=(EditText)findViewById(R.id.name_field);
-        ed2=(EditText)findViewById(R.id.subject_field);
-        ed3=(EditText)findViewById(R.id.body_field);
-        button6 =(Button)findViewById(R.id.sendnotification_button);
+        body_et=(EditText)findViewById(R.id.body_field);
+        snd_msg =(Button)findViewById(R.id.sendnotification_button);
+        choices = findViewById(R.id.reminders_spinner);
 
-        button6.setOnClickListener(new View.OnClickListener() {
-
+        snd_msg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 grabData();
@@ -35,16 +33,15 @@ public class ApplianceReminder extends AppCompatActivity {
     }
 
     private void grabData() {
-        String tittle=ed1.getText().toString().trim();
-        String subject=ed2.getText().toString().trim();
-        String body=ed3.getText().toString().trim();
+        String subject = choices.getItemAtPosition(choices.getSelectedItemPosition()).toString();
+        String body = body_et.getText().toString().trim();
 
         NotificationManager nm =(NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
         Notification notify=new Notification.Builder
-                (getApplicationContext()).setContentTitle(tittle).setContentText(body).
+                (getApplicationContext()).setContentText(body).
                 setContentTitle(subject).setSmallIcon(R.drawable.download).build();
-
         notify.flags |= Notification.FLAG_AUTO_CANCEL;
         nm.notify(0, notify);
+        finish();
     }
 }
