@@ -39,6 +39,17 @@
             app:layout_constraintBottom_toTopOf="@+id/sendnotification_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+        <EditText
+            android:id="@+id/phone_number_field"
+            android:layout_width="215dp"
+            android:layout_height="wrap_content"
+
+            android:ems="10"
+            android:hint="Phone number"
+            android:singleLine="false"
+            app:layout_constraintBottom_toTopOf="@+id/sendnotification_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/sendnotification_button"
