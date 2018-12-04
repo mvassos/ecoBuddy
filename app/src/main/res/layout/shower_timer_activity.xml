@@ -32,6 +32,7 @@
             android:id="@+id/button_start_timer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/oval_button_shape"
             android:onClick="startChronometer"
             android:text="START"
             android:textColor="@color/ForestGreen" />
@@ -40,6 +41,7 @@
             android:id="@+id/button_stop_timer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/oval_button_shape"
             android:onClick="pauseChronometer"
             android:text="PAUSE"
             android:textColor="@color/Yellow" />
@@ -48,6 +50,7 @@
             android:id="@+id/button_reset_timer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/oval_button_shape"
             android:onClick="resetChronometer"
             android:text="RESET"
             android:textColor="@android:color/holo_red_dark" />
@@ -61,6 +64,7 @@
         android:id="@+id/logdata_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/oval_button_shape"
         android:onClick="logData"
         android:text="LOG DATA"
         android:textColor="@color/ForestGreen" />

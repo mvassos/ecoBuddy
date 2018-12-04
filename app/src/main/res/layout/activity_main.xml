@@ -28,10 +28,12 @@
     <HorizontalScrollView
         android:layout_width="fill_parent"
         android:layout_height="573dp"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_gravity="center"
-        android:fillViewport="true"
-        >
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:fillViewport="true">
 
 
         <LinearLayout
@@ -53,6 +55,7 @@
                 android:layout_marginEnd="6dp"
                 android:layout_marginRight="6dp"
                 android:layout_marginBottom="10dp"
+                android:background="@drawable/oval_button_shape"
                 android:text="Shower timer"
                 android:textColor="@color/ForestGreen"
                 app:layout_constraintBottom_toTopOf="@+id/data_button"
@@ -64,19 +67,21 @@
                 android:id="@+id/button_enterBills"
                 android:layout_width="117dp"
                 android:layout_height="wrap_content"
+                android:background="@drawable/oval_button_shape"
                 android:text="Enter Bill"
                 android:textColor="@color/ForestGreen" />
 
             <Button
                 android:id="@+id/data_button"
                 android:layout_width="109dp"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
                 android:layout_marginLeft="6dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="6dp"
                 android:layout_marginRight="6dp"
                 android:layout_marginBottom="31dp"
+                android:background="@drawable/oval_button_shape"
                 android:text="Data"
                 android:textColor="@color/ForestGreen"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -87,11 +92,12 @@
             <Button
                 android:id="@+id/ecoreminders_button"
                 android:layout_width="wrap_content"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="3dp"
                 android:layout_marginLeft="3dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="10dp"
+                android:background="@drawable/oval_button_shape"
                 android:text="ecoReminders"
                 android:textColor="@color/ForestGreen"
                 app:layout_constraintBottom_toTopOf="@+id/showertimer_button"
@@ -102,12 +108,13 @@
 
             <Button
                 android:id="@+id/signout_button"
-                android:layout_width="wrap_content"
+                android:layout_width="103dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
+                android:background="@drawable/oval_button_shape"
                 android:text="sign out"
                 android:textColor="@color/ForestGreen"
                 app:layout_constraintEnd_toEndOf="parent"

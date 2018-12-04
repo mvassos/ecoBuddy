@@ -44,6 +44,7 @@
             android:id="@+id/sendnotification_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/oval_button_shape"
             android:text="Send Notification"
             android:textColor="@color/ForestGreen"
             app:layout_constraintBottom_toBottomOf="parent"

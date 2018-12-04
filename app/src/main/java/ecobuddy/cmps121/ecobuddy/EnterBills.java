@@ -24,6 +24,7 @@ public class EnterBills extends AppCompatActivity {
     String billAmount;
     String month;
 
+
     String[] months;
     ArrayAdapter <String> adapter;
 
@@ -122,6 +123,7 @@ public class EnterBills extends AppCompatActivity {
             user_db.updateChildren(newPost);
 
             Toast.makeText(this,"Bill Recorded Successfully", Toast.LENGTH_LONG).show();
+            finish();
 
     }
 }
