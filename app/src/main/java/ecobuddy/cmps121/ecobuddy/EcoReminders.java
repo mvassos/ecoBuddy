@@ -42,6 +42,5 @@ public class EcoReminders extends AppCompatActivity {
     public void appliances_nav() {
         Intent intent = new Intent(this, ApplianceReminder.class);
         startActivity(intent);
-
     }
 }
