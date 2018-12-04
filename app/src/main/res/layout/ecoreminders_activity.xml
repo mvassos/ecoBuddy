@@ -36,7 +36,8 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/oval_button_shape"
                 android:text="Set Bill Reminder"
-                android:textColor="@color/ForestGreen" />
+                android:textColor="@color/ForestGreen"
+                android:paddingTop="16dp"/>
 
         </LinearLayout>
     </HorizontalScrollView>
