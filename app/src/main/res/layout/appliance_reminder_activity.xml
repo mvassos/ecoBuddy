@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".ApplianceReminder"
     android:orientation="vertical"
-    android:layout_gravity="center_vertical">
+    android:layout_gravity="center_vertical"
+    >
 
 
     <LinearLayout
@@ -25,6 +26,7 @@
             android:entries="@array/spinner_elements">
 
         </Spinner>
+
         <EditText
             android:id="@+id/body_field"
             android:layout_width="215dp"
@@ -33,15 +35,17 @@
             android:ems="10"
             android:hint="Body"
             android:inputType="textPersonName"
+            android:singleLine="false"
             app:layout_constraintBottom_toTopOf="@+id/sendnotification_button"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/sendnotification_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Send Notification"
+            android:textColor="@color/ForestGreen"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

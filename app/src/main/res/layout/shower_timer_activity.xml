@@ -28,40 +28,42 @@
         android:paddingBottom="16dp">
 
 
-
         <Button
             android:id="@+id/button_start_timer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="startChronometer"
             android:text="START"
-            android:onClick="startChronometer"/>
+            android:textColor="@color/ForestGreen" />
 
         <Button
             android:id="@+id/button_stop_timer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="pauseChronometer"
             android:text="PAUSE"
-            android:onClick="pauseChronometer"/>
+            android:textColor="@color/Yellow" />
 
         <Button
             android:id="@+id/button_reset_timer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="resetChronometer"
             android:text="RESET"
-            android:onClick="resetChronometer"/>
+            android:textColor="@android:color/holo_red_dark" />
 
 
 
     </LinearLayout>
 
 
-
     <Button
         android:id="@+id/logdata_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="logData"
         android:text="LOG DATA"
-        android:onClick="logData"/>
+        android:textColor="@color/ForestGreen" />
 
     <TextView
         android:layout_width="wrap_content"
