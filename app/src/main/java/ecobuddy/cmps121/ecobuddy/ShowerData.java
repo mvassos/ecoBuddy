@@ -11,13 +11,15 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.jjoe64.graphview.DefaultLabelFormatter;
 import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.BarGraphSeries;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
 public class ShowerData extends AppCompatActivity {
 
-    LineGraphSeries<DataPoint> series;
+    BarGraphSeries<DataPoint> series;
     GraphView graph;
 
     private int total_times;
@@ -36,7 +38,22 @@ public class ShowerData extends AppCompatActivity {
         user_db = FirebaseDatabase.getInstance().getReference("Users");
 
         graph = findViewById(R.id.GraphView_shower);
-        series = new LineGraphSeries<>();
+        series = new BarGraphSeries<>();
+
+
+        graph.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter(){
+
+            @Override
+            public String formatLabel(double value, boolean isValueX) {
+
+                if(!isValueX){
+                    return super.formatLabel(value, isValueX)+"sec.";
+                }
+
+                    return super.formatLabel(value, isValueX);
+
+            }
+        });
 
 
     }
@@ -53,20 +70,29 @@ public class ShowerData extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 total_times = dataSnapshot.child(uid).child("totaltimes").getValue(Integer.class);
-                Log.d(TAG, "onDataChange: total times = "+total_times);
+                int show_times = total_times - 7;
+
+                Log.d(TAG, "onDataChange: total times = "+total_times+". Going to view starting at time: "+show_times);
 
                 int x = 0;
                 int y = 0;
 
                 Log.d(TAG, "onDataChange: x = "+x+", y = "+y);
 
-                for(DataSnapshot myDataSnapshot : dataSnapshot.child(uid).child("times").getChildren()){
-                    x = Integer.parseInt(myDataSnapshot.getKey())+1;
-                    y = Integer.valueOf(String.valueOf(myDataSnapshot.getValue()))/1000;
+                for(DataSnapshot myDataSnapshot : dataSnapshot.child(uid).child("times").getChildren()) {
+                    x = Integer.parseInt(myDataSnapshot.getKey());
+                    y = Integer.valueOf(String.valueOf(myDataSnapshot.getValue())) / 1000;
 
-                    Log.d(TAG, "onDataChange: x = "+x+", y = "+y);
+                    Log.d(TAG, "onDataChange: x = " + x + ", y = " + y);
 
-                    series.appendData(new DataPoint(x,y),true,total_times);
+                    if(total_times <= 7){
+                        series.appendData(new DataPoint(x, y), true, total_times);
+                        Log.d(TAG, "onDataChange: APPENDING x = " + x + ", y = " + y);
+                    }
+                    else if (x >= show_times) {
+                        series.appendData(new DataPoint(x, y), true, total_times);
+                        Log.d(TAG, "onDataChange: APPENDING x = " + x + ", y = " + y);
+                    }
                 }
 
                 graph.addSeries(series);
