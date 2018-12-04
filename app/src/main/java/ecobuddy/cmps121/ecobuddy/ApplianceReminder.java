@@ -32,8 +32,6 @@ public class ApplianceReminder extends AppCompatActivity {
         phone_number_et = findViewById(R.id.phone_number_field);
         snd_msg =(Button)findViewById(R.id.sendnotification_button);
         choices = findViewById(R.id.reminders_spinner);
-       // snd_msg.setEnabled(true);
-
         snd_msg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,19 +48,9 @@ public class ApplianceReminder extends AppCompatActivity {
         checkForSmsPermission();
         SmsManager smsManager = SmsManager.getDefault();
         smsManager.sendTextMessage(number, null, subject + ": " + body, null, null);
-        Toast.makeText(this, "Message sent!", Toast.LENGTH_LONG);
-
-
-        /*
-        NotificationManager nm =(NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
-        Notification notify=new Notification.Builder
-                (getApplicationContext()).setContentText(body).
-                setContentTitle(subject).setSmallIcon(R.drawable.download).build();
-        notify.flags |= Notification.FLAG_AUTO_CANCEL;
-        nm.notify(0, notify);
-  */
-      //  finish();
+        finish();
     }
+
     private void checkForSmsPermission() {
         if (ActivityCompat.checkSelfPermission(this,
                 Manifest.permission.SEND_SMS) !=
@@ -80,11 +68,8 @@ public class ApplianceReminder extends AppCompatActivity {
             enableSmsButton();
         }
     }
+
     private void enableSmsButton() {
         snd_msg.setEnabled(true);
-    }
-
-    private void disableSmsButton() {
-        snd_msg.setEnabled(false);
     }
 }
