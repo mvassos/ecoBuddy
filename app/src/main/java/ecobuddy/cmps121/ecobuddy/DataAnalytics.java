@@ -25,6 +25,7 @@ public class DataAnalytics extends AppCompatActivity {
     TextView time;
 
     Button showerButton;
+    Button billsButton;
 
 
 
@@ -45,11 +46,25 @@ public class DataAnalytics extends AppCompatActivity {
             }
         });
 
+        billsButton = (Button) findViewById(R.id.button_view_billData);
+        billsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                billData_nav();
+            }
+        });
+
     }
 
     public void showerData_nav() {
         Intent intent = new Intent(this, ShowerData.class);
         startActivity(intent);
+    }
+
+    public void billData_nav(){
+        Intent intent = new Intent(this, BillsData.class);
+        startActivity(intent);
+
     }
 
     /*@Override

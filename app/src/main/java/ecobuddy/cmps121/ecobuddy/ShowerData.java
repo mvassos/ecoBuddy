@@ -66,7 +66,7 @@ public class ShowerData extends AppCompatActivity {
         Log.d(TAG, "onStart: uid = "+uid);
 
 
-        user_db.addValueEventListener(new ValueEventListener() {
+        user_db.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 total_times = dataSnapshot.child(uid).child("totaltimes").getValue(Integer.class);
@@ -106,7 +106,7 @@ public class ShowerData extends AppCompatActivity {
             }
         });
 
-        user_db.child("times").addValueEventListener(new ValueEventListener() {
+        user_db.child("times").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
