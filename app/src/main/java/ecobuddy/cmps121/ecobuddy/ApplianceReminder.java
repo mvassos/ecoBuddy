@@ -19,9 +19,9 @@ import android.widget.Toast;
 
 
 public class ApplianceReminder extends AppCompatActivity {
-    EditText body_et, phone_number_et;
+    EditText body_et;
     Button snd_msg;
-    Spinner choices;
+    Spinner choices, contacts;
     private static final int MY_PERMISSIONS_REQUEST_SEND_SMS = 1;
 
     protected void onCreate(Bundle savedInstanceState){
@@ -29,9 +29,9 @@ public class ApplianceReminder extends AppCompatActivity {
         setContentView(R.layout.appliance_reminder_activity);
 
         body_et=(EditText)findViewById(R.id.body_field);
-        phone_number_et = findViewById(R.id.phone_number_field);
         snd_msg =(Button)findViewById(R.id.sendnotification_button);
         choices = findViewById(R.id.reminders_spinner);
+        contacts = findViewById(R.id.contacts_spinner);
         snd_msg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,7 +43,7 @@ public class ApplianceReminder extends AppCompatActivity {
     private void grabData() {
         String subject = choices.getItemAtPosition(choices.getSelectedItemPosition()).toString();
         String body = body_et.getText().toString().trim();
-        String number = phone_number_et.getText().toString();
+        String number = contacts.getItemAtPosition(contacts.getSelectedItemPosition()).toString();
 
         checkForSmsPermission();
         SmsManager smsManager = SmsManager.getDefault();

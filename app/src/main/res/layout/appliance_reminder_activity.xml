@@ -21,17 +21,17 @@
 
         <Spinner
             android:id="@+id/reminders_spinner"
+            android:layout_margin="16dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:entries="@array/spinner_elements">
-
         </Spinner>
 
         <EditText
             android:id="@+id/body_field"
             android:layout_width="215dp"
             android:layout_height="wrap_content"
-
+            android:layout_margin="16dp"
             android:ems="10"
             android:hint="Body"
             android:inputType="textPersonName"
@@ -40,20 +40,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <EditText
-            android:id="@+id/phone_number_field"
-            android:layout_width="215dp"
+        <Spinner
+            android:layout_margin="16dp"
+            android:id="@+id/contacts_spinner"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
-            android:ems="10"
-            android:hint="Phone number"
-            android:inputType="number"
-            android:singleLine="true"
-            app:layout_constraintBottom_toTopOf="@+id/sendnotification_button"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:entries="@array/contacts">
+        </Spinner>
 
         <Button
+            android:layout_margin="16dp"
             android:id="@+id/sendnotification_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
