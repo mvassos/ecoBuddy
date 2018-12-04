@@ -17,6 +17,7 @@ import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
 import com.jjoe64.graphview.series.BarGraphSeries;
 import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -24,7 +25,7 @@ import java.util.Date;
 
 public class BillsData extends AppCompatActivity {
 
-    BarGraphSeries<DataPoint> series;
+    LineGraphSeries<DataPoint> series;
     GraphView graph;
 
     private FirebaseAuth mAuth;
@@ -43,30 +44,36 @@ public class BillsData extends AppCompatActivity {
         user_db = FirebaseDatabase.getInstance().getReference("Users");
 
         graph = findViewById(R.id.GraphView_bills);
-        series = new BarGraphSeries<>();
+        series = new LineGraphSeries<>();
 
         graph.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter(){
 
             @Override
             public String formatLabel(double value, boolean isValueX) {
 
+                if(!isValueX && (value%1 ==0)){
+                    return "$"+super.formatLabel(value, isValueX);//sdf.format(new Date((long) value));
+                }
                 if(isValueX){
-                    return sdf.format(new Date((long) value));
+                    return super.formatLabel(value, isValueX);
                 }
-                else {
-                    if(value%10 == 0)
-                    return "$"+super.formatLabel(value, isValueX);
-                }
-                return"";
+                return "";
             }
         });
 
         //graph.getViewport().setScalable(true);
         //graph.getViewport().setScrollable(true);
 
-        //graph.getGridLabelRenderer().setNumHorizontalLabels(6);
-        graph.getGridLabelRenderer().setHumanRounding(true);
+        graph.getGridLabelRenderer().setNumHorizontalLabels(12);
+        graph.getGridLabelRenderer().setHumanRounding(false);
 
+        graph.getViewport().setXAxisBoundsManual(true);
+        graph.getViewport().setMinX(1);
+        graph.getViewport().setMaxX(12);
+
+        graph.getViewport().setYAxisBoundsManual(true);
+        graph.getViewport().setMinY(50);
+        graph.getViewport().setMaxY(300);
 
 
 
@@ -76,7 +83,7 @@ public class BillsData extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        series = new BarGraphSeries<DataPoint>();
+        series = new LineGraphSeries<DataPoint>();
         graph.removeAllSeries();
        // Toast.makeText(this, "back pressed",Toast.LENGTH_SHORT).show();
         this.finish();
@@ -131,11 +138,12 @@ public class BillsData extends AppCompatActivity {
                             break;
                     }
 
+                    x = Integer.parseInt(monthVal);
                     y = Double.parseDouble(String.valueOf(myDataSnapshot.getValue()));
 
                     Log.d(TAG, "onDataChange: x = "+xD.toString()+", y = "+y);
 
-                    series.appendData(new DataPoint(xD,y),true,12);
+                    series.appendData(new DataPoint(x,y),true,12);
                 }
 
                 graph.addSeries(series);
