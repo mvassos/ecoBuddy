@@ -1,21 +1,20 @@
 package ecobuddy.cmps121.ecobuddy;
 
-import android.os.SystemClock;
+import android.graphics.PorterDuff;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,7 +22,6 @@ public class EnterBills extends AppCompatActivity {
 
     String billAmount;
     String month;
-
 
     String[] months;
     ArrayAdapter <String> adapter;
@@ -59,7 +57,7 @@ public class EnterBills extends AppCompatActivity {
                 billAmount = inputAmount.getText().toString();
 
                 if(billAmount.length()==0){
-                    Toast.makeText(getApplicationContext(),"Enter an amount", Toast.LENGTH_SHORT).show();
+                    toastMessage("Enter an amount", 0);
                 }
                 else {
                     switch (inputMonth.getSelectedItem().toString()) {
@@ -100,12 +98,7 @@ public class EnterBills extends AppCompatActivity {
                             month = "12";
                             break;
                     }
-
-
-                    Log.d(TAG, "onClick: month = " + month + ", amount = " + billAmount);
-
                     logData(v, month, billAmount);
-
                 }
             }
         });
@@ -115,15 +108,22 @@ public class EnterBills extends AppCompatActivity {
 
             String user_id = mAuth.getCurrentUser().getUid();
             DatabaseReference user_db = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id).child("Bills");
-
             Map newPost = new HashMap();
-
             newPost.put(month, amount);
-
             user_db.updateChildren(newPost);
 
-            Toast.makeText(this,"Bill Recorded Successfully", Toast.LENGTH_LONG).show();
+            toastMessage("Bill Recorded Successfully", 0);
+
             finish();
 
+    }
+
+    private void toastMessage(String msg, int len) {
+        Toast toast = Toast.makeText(this, msg, len);
+        View view = toast.getView();
+        view.getBackground().setColorFilter(getResources().getColor(R.color.Black), PorterDuff.Mode.SRC_IN);
+        TextView text = view.findViewById(android.R.id.message);
+        text.setTextColor(getResources().getColor(R.color.Teal));
+        toast.show();
     }
 }

@@ -45,10 +45,10 @@
             android:value="@string/google_maps_key" />
 
         <activity android:name=".ShowerTimer" />
-        <activity android:name=".SetBill" />
+        <activity android:name=".SetBillReminder" />
         <activity android:name=".DataAnalytics" />
         <activity android:name=".EcoReminders" />
-        <activity android:name=".ApplianceReminder" />
+        <activity android:name=".MessageSender" />
         <activity android:name=".EnterBills" />
         <activity android:name=".ShowerData" />
         <activity android:name=".BillsData"></activity>

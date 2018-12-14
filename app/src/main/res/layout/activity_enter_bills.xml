@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".EnterBills"
     android:orientation="vertical"
-    android:gravity="center">
+    android:gravity="center"
+    android:background="@drawable/backsplash_white">
 
     <TextView
         android:layout_width="wrap_content"
@@ -42,7 +43,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/oval_button_shape"
         android:text="Track Bill"
-        android:textColor="@color/ForestGreen" />
+        android:textColor="@color/Black" />
 
 
 

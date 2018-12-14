@@ -10,7 +10,8 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingTop="32dp"
-    android:gravity="center_horizontal">
+    android:gravity="center_horizontal"
+    android:background="@drawable/backsplash_white">
 
     <Chronometer
         android:id="@+id/timer_shower"
@@ -35,7 +36,7 @@
             android:background="@drawable/oval_button_shape"
             android:onClick="startChronometer"
             android:text="START"
-            android:textColor="@color/ForestGreen" />
+            android:textColor="@color/Black" />
 
         <Button
             android:id="@+id/button_stop_timer"
@@ -44,7 +45,7 @@
             android:background="@drawable/oval_button_shape"
             android:onClick="pauseChronometer"
             android:text="PAUSE"
-            android:textColor="@color/Yellow" />
+            android:textColor="@android:color/black" />
 
         <Button
             android:id="@+id/button_reset_timer"
@@ -53,7 +54,7 @@
             android:background="@drawable/oval_button_shape"
             android:onClick="resetChronometer"
             android:text="RESET"
-            android:textColor="@android:color/holo_red_dark" />
+            android:textColor="@android:color/black" />
 
 
 
@@ -67,7 +68,7 @@
         android:background="@drawable/oval_button_shape"
         android:onClick="logData"
         android:text="LOG DATA"
-        android:textColor="@color/ForestGreen" />
+        android:textColor="@android:color/black" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -87,10 +88,11 @@
         android:layout_height="wrap_content"
         android:paddingTop="16dp"
         android:text="Start timer as soon as the water turns on." />
+
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/money_shower"/>
+        android:layout_width="156dp"
+        android:layout_height="148dp"
+        app:srcCompat="@drawable/money_shower" />
 
 
 </LinearLayout>

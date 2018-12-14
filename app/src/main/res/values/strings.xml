@@ -13,4 +13,8 @@
         <item>8312124212</item>
         <item>7078156454</item>
     </string-array>
+
+    <string-array name="eco_tips">
+        <item>Buy local. In North America, fruits and vegetables travel an average of 1,500 miles before reaching your plate. Buy fresh, local food to eliminate the long distances traveled and preserve nutrients and flavor.</item>
+    </string-array>
 </resources>

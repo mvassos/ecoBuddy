@@ -1,13 +1,14 @@
 package ecobuddy.cmps121.ecobuddy;
 
+import android.graphics.PorterDuff;
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -37,7 +38,7 @@ public class ShowerTimer extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.shower_timer_activity);
+        setContentView(R.layout.activity_shower_timer);
 
         mAuth = FirebaseAuth.getInstance();
         user_db = FirebaseDatabase.getInstance().getReference("Users");
@@ -73,9 +74,6 @@ public class ShowerTimer extends AppCompatActivity {
         super.onStart();
 
         final String uid = FirebaseAuth.getInstance().getUid();
-        Log.d(TAG, "onStart: uid = "+uid);
-
-
         user_db.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -86,7 +84,6 @@ public class ShowerTimer extends AppCompatActivity {
                     user_db.child(uid).child("totaltimes").setValue(0);
                     total_times = 0;
                 }
-                Log.d(TAG, "onDataChange: total times = "+total_times);
             }
 
             @Override
@@ -103,7 +100,6 @@ public class ShowerTimer extends AppCompatActivity {
             chronometer.setBase(SystemClock.elapsedRealtime() - pauseOffset);
             chronometer.start();
             running = true;
-
         }
     }
 
@@ -112,7 +108,6 @@ public class ShowerTimer extends AppCompatActivity {
             chronometer.stop();
             pauseOffset = SystemClock.elapsedRealtime() - chronometer.getBase();
             running = false;
-
         }
     }
 
@@ -120,13 +115,11 @@ public class ShowerTimer extends AppCompatActivity {
         pauseChronometer(v);
         chronometer.setBase(SystemClock.elapsedRealtime());
         pauseOffset = 0;
-
     }
 
     private void logData(View v) {
-
         if((SystemClock.elapsedRealtime() - chronometer.getBase()) <= 10000){
-            Toast.makeText(this,"Shower Must Be A Realistic Time", Toast.LENGTH_LONG).show();
+            toastMessage("Shower Must Be A Realistic Time", 1);
         }
         else{
             String user_id = mAuth.getCurrentUser().getUid();
@@ -144,12 +137,17 @@ public class ShowerTimer extends AppCompatActivity {
 
             newTimes.put("totaltimes",total_times);
             user_db.updateChildren(newTimes);
-
-            Log.d(TAG, "logData: about to reset");
-            
             resetChronometer(v);
 
-            Toast.makeText(this,"Time Recorded Successfully", Toast.LENGTH_LONG).show();
+            toastMessage("Time Recorded Successfully", 1);
         }
+    }
+    private void toastMessage(String msg, int len) {
+        Toast toast = Toast.makeText(this, msg, len);
+        View view = toast.getView();
+        view.getBackground().setColorFilter(getResources().getColor(R.color.Black), PorterDuff.Mode.SRC_IN);
+        TextView text = view.findViewById(android.R.id.message);
+        text.setTextColor(getResources().getColor(R.color.Teal));
+        toast.show();
     }
 }

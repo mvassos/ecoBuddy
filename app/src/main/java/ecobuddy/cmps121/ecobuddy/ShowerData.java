@@ -63,41 +63,26 @@ public class ShowerData extends AppCompatActivity {
         super.onStart();
 
         final String uid = FirebaseAuth.getInstance().getUid();
-        Log.d(TAG, "onStart: uid = "+uid);
-
-
         user_db.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 total_times = dataSnapshot.child(uid).child("totaltimes").getValue(Integer.class);
                 int show_times = total_times - 7;
-
-                Log.d(TAG, "onDataChange: total times = "+total_times+". Going to view starting at time: "+show_times);
-
                 int x = 0;
                 int y = 0;
-
-                Log.d(TAG, "onDataChange: x = "+x+", y = "+y);
 
                 for(DataSnapshot myDataSnapshot : dataSnapshot.child(uid).child("times").getChildren()) {
                     x = Integer.parseInt(myDataSnapshot.getKey());
                     y = Integer.valueOf(String.valueOf(myDataSnapshot.getValue())) / 1000;
 
-                    Log.d(TAG, "onDataChange: x = " + x + ", y = " + y);
-
                     if(total_times <= 7){
                         series.appendData(new DataPoint(x, y), true, total_times);
-                        Log.d(TAG, "onDataChange: APPENDING x = " + x + ", y = " + y);
                     }
                     else if (x >= show_times) {
                         series.appendData(new DataPoint(x, y), true, total_times);
-                        Log.d(TAG, "onDataChange: APPENDING x = " + x + ", y = " + y);
                     }
                 }
-
                 graph.addSeries(series);
-
-
             }
 
             @Override
@@ -112,27 +97,15 @@ public class ShowerData extends AppCompatActivity {
 
                 int x = 0;
                 int y = 0;
-
                 for(DataSnapshot myDataSnapshot: dataSnapshot.getChildren()){
                     x = Integer.parseInt(myDataSnapshot.getKey());
                     y = Integer.valueOf(String.valueOf(myDataSnapshot.getValue()));
-
-                    Log.d(TAG, "onDataChange: x = "+x+", y = "+y);
-
                     series.appendData(new DataPoint(x,y),true,total_times);
                 }
-
                 graph.addSeries(series);
-
             }
-
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
+            public void onCancelled(@NonNull DatabaseError databaseError) { }
         });
-
     }
-
-
 }

@@ -1,24 +1,21 @@
 package ecobuddy.cmps121.ecobuddy;
 
 import android.Manifest;
-import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.PorterDuff;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.content.Context;
 import android.telephony.SmsManager;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class ApplianceReminder extends AppCompatActivity {
+public class MessageSender extends AppCompatActivity {
     EditText body_et;
     Button snd_msg;
     Spinner choices, contacts;
@@ -26,7 +23,7 @@ public class ApplianceReminder extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.appliance_reminder_activity);
+        setContentView(R.layout.activity_send_message);
 
         body_et=(EditText)findViewById(R.id.body_field);
         snd_msg =(Button)findViewById(R.id.sendnotification_button);
@@ -45,31 +42,39 @@ public class ApplianceReminder extends AppCompatActivity {
         String body = body_et.getText().toString().trim();
         String number = contacts.getItemAtPosition(contacts.getSelectedItemPosition()).toString();
 
-        checkForSmsPermission();
-        SmsManager smsManager = SmsManager.getDefault();
-        smsManager.sendTextMessage(number, null, subject + ": " + body, null, null);
-        finish();
+        if (body.length() > 0) {
+            checkForSmsPermission();
+            SmsManager smsManager = SmsManager.getDefault();
+            smsManager.sendTextMessage(number, null, subject + ": " + body, null, null);
+            finish();
+        } else {
+            toastMessage("No Text was entered...", 0);
+        }
     }
 
     private void checkForSmsPermission() {
         if (ActivityCompat.checkSelfPermission(this,
                 Manifest.permission.SEND_SMS) !=
                 PackageManager.PERMISSION_GRANTED) {
-            Log.d("permission", "not granted");
-            // Permission not yet granted. Use requestPermissions().
-            // MY_PERMISSIONS_REQUEST_SEND_SMS is an
-            // app-defined int constant. The callback method gets the
-            // result of the request.
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.SEND_SMS},
                     MY_PERMISSIONS_REQUEST_SEND_SMS);
         } else {
-            // Permission already granted. Enable the message button.
             enableSmsButton();
         }
     }
 
     private void enableSmsButton() {
         snd_msg.setEnabled(true);
+    }
+
+
+    private void toastMessage(String msg, int len) {
+        Toast toast = Toast.makeText(this, msg, len);
+        View view = toast.getView();
+        view.getBackground().setColorFilter(getResources().getColor(R.color.Black), PorterDuff.Mode.SRC_IN);
+        TextView text = view.findViewById(android.R.id.message);
+        text.setTextColor(getResources().getColor(R.color.Teal));
+        toast.show();
     }
 }

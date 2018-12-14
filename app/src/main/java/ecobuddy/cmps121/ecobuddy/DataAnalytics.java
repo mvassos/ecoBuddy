@@ -23,11 +23,8 @@ public class DataAnalytics extends AppCompatActivity {
     private long miliSec;
     private String TAG = "dataAnalytics";
     TextView time;
-
     Button showerButton;
     Button billsButton;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,28 +61,5 @@ public class DataAnalytics extends AppCompatActivity {
     public void billData_nav(){
         Intent intent = new Intent(this, BillsData.class);
         startActivity(intent);
-
     }
-
-    /*@Override
-    protected void onStart() {
-        super.onStart();
-
-        final String uid = FirebaseAuth.getInstance().getUid();
-        Log.d(TAG, "onStart: uid = "+uid);
-
-        user_db.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                miliSec = dataSnapshot.child(uid).child("time").getValue(Long.class);
-                Log.d(TAG, "onDataChange: miliSec values = "+miliSec);
-                time.setText(String.valueOf(miliSec/1000) + " seconds");
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                throw databaseError.toException();
-            }
-        });
-    }*/
 }

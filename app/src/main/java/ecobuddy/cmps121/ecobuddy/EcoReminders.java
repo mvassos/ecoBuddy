@@ -35,12 +35,12 @@ public class EcoReminders extends AppCompatActivity {
     }
 
     public void setBill_nav() {
-        Intent i = new Intent(this, SetBill.class);
+        Intent i = new Intent(this, SetBillReminder.class);
         startActivity(i);
     }
 
     public void appliances_nav() {
-        Intent intent = new Intent(this, ApplianceReminder.class);
+        Intent intent = new Intent(this, MessageSender.class);
         startActivity(intent);
     }
 }

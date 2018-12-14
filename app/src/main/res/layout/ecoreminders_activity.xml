@@ -23,23 +23,22 @@
             android:orientation="vertical">
 
             <Button
-                android:layout_margin="16dp"
                 android:id="@+id/send_message_btn"
                 android:layout_width="107dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="16dp"
                 android:background="@drawable/oval_button_shape"
                 android:text="Send Message"
-                android:textColor="@color/ForestGreen" />
+                android:textColor="@android:color/black" />
 
             <Button
-                android:layout_margin="16dp"
                 android:id="@+id/set_bill_button"
                 android:layout_width="107dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="16dp"
                 android:background="@drawable/oval_button_shape"
                 android:text="Set Bill Reminder"
-                android:textColor="@color/ForestGreen"
-               />
+                android:textColor="@android:color/black" />
 
         </LinearLayout>
     </HorizontalScrollView>

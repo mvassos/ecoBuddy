@@ -85,7 +85,6 @@ public class BillsData extends AppCompatActivity {
         super.onBackPressed();
         series = new LineGraphSeries<DataPoint>();
         graph.removeAllSeries();
-       // Toast.makeText(this, "back pressed",Toast.LENGTH_SHORT).show();
         this.finish();
     }
 
@@ -93,9 +92,6 @@ public class BillsData extends AppCompatActivity {
         super.onStart();
 
         final String uid = FirebaseAuth.getInstance().getUid();
-        Log.d(TAG, "onStart: uid = "+uid);
-
-
         user_db.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -104,12 +100,10 @@ public class BillsData extends AppCompatActivity {
                 Date xD = new Date();
                 int x = 0;
                 double y = 0;
-                Log.d(TAG, "onDataChange: x = "+x+", y = "+y);
 
                 for(DataSnapshot myDataSnapshot: dataSnapshot.child(uid).child("Bills").getChildren()){
                     //make x be 1-12 via more switch statements
                     monthVal = String.valueOf(myDataSnapshot.getKey());
-                    Log.d(TAG, "onDataChange: monthVal = "+monthVal);
 
                     switch (monthVal){
                         case "1": xD = new Date(2018,0,1);
@@ -140,24 +134,13 @@ public class BillsData extends AppCompatActivity {
 
                     x = Integer.parseInt(monthVal);
                     y = Double.parseDouble(String.valueOf(myDataSnapshot.getValue()));
-
-                    Log.d(TAG, "onDataChange: x = "+xD.toString()+", y = "+y);
-
                     series.appendData(new DataPoint(x,y),true,12);
                 }
-
                 graph.addSeries(series);
-
-
                 graph.getGridLabelRenderer().setHumanRounding(false);
-
             }
-
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
+            public void onCancelled(@NonNull DatabaseError databaseError) { }
         });
-
     }
 }

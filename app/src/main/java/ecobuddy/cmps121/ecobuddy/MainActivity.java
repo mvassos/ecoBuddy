@@ -3,19 +3,18 @@ package ecobuddy.cmps121.ecobuddy;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.PorterDuff;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -25,15 +24,8 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button button;
-    Button button2;
-    Button button3;
-    Button signout;
-    Button buttonBill;
-
+    Button eco_rem_btn, shower_timer_btn, data_btn, signout_btn, bill_btn;
     TextView username;
-
-    String TAG = "MainActivity";
 
     private FirebaseAuth mAuth;
     private GoogleSignInClient mGoogleSignInClient;
@@ -57,22 +49,12 @@ public class MainActivity extends AppCompatActivity {
                 Manifest.permission.SEND_SMS)
                 != PackageManager.PERMISSION_GRANTED) {
 
-            // Permission is not granted
-            // Should we show an explanation?
             if (ActivityCompat.shouldShowRequestPermissionRationale(this,
                     Manifest.permission.SEND_SMS)) {
-                // Show an explanation to the user *asynchronously* -- don't block
-                // this thread waiting for the user's response! After the user
-                // sees the explanation, try again to request the permission.
             } else {
-                // No explanation needed; request the permission
                 ActivityCompat.requestPermissions(this,
                         new String[]{Manifest.permission.SEND_SMS},
                         0);
-
-                // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
-                // app-defined int constant. The callback method gets the
-                // result of the request.
             }
         } else {
             // Permission has already been granted
@@ -92,17 +74,17 @@ public class MainActivity extends AppCompatActivity {
 
 
         username = (TextView) findViewById(R.id.TextView_username);
-        button = (Button) findViewById(R.id.ecoreminders_button);
+        eco_rem_btn = (Button) findViewById(R.id.ecoreminders_button);
 
-        button.setOnClickListener(new View.OnClickListener() {
+        eco_rem_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ecoReminders_nav();
             }
         });
 
-        button2 = (Button) findViewById(R.id.showertimer_button);
-        button2.setOnClickListener(new View.OnClickListener() {
+        shower_timer_btn = (Button) findViewById(R.id.showertimer_button);
+        shower_timer_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showerTimer_nav();
@@ -110,8 +92,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        button3 = (Button) findViewById(R.id.data_button);
-        button3.setOnClickListener(new View.OnClickListener() {
+        data_btn = (Button) findViewById(R.id.data_button);
+        data_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dataAnalytics_nav();
@@ -120,19 +102,18 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        buttonBill = (Button) findViewById(R.id.button_enterBills);
-        buttonBill.setOnClickListener(new View.OnClickListener() {
+        bill_btn = (Button) findViewById(R.id.button_enterBills);
+        bill_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 billEnter_nav();
             }
         });
 
-        signout = (Button) findViewById(R.id.signout_button);
-        signout.setOnClickListener(new View.OnClickListener() {
+        signout_btn = (Button) findViewById(R.id.signout_button);
+        signout_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d(TAG, "onClick: headed to signout()");
                 signOut();
             }
         });
@@ -150,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
             username.setText("Username: "+ user.getEmail());
         }
         else{
-            Toast.makeText(this, "Signed Out", Toast.LENGTH_LONG).show();
+            toastMessage("Bye!", 1);
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
         }
@@ -178,19 +159,24 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void signOut() {
-        Log.d(TAG, "signOut: entered");
         // Firebase sign out
         mAuth.signOut();
-        Log.d(TAG, "signOut: mAuth.signOut");
         // Google sign out
         mGoogleSignInClient.signOut().addOnCompleteListener(this,
                 new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        Log.d(TAG, "onComplete: google sign out finish");
                         updateUserInfo(null);
                     }
                 });
     }
 
+    private void toastMessage(String msg, int len) {
+        Toast toast = Toast.makeText(this, msg, len);
+        View view = toast.getView();
+        view.getBackground().setColorFilter(getResources().getColor(R.color.Black), PorterDuff.Mode.SRC_IN);
+        TextView text = view.findViewById(android.R.id.message);
+        text.setTextColor(getResources().getColor(R.color.Teal));
+        toast.show();
+    }
 }
