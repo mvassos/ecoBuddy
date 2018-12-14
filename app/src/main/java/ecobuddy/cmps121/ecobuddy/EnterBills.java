@@ -21,7 +21,7 @@ import java.util.Map;
 public class EnterBills extends AppCompatActivity {
 
     String billAmount;
-    String month;
+    int month;
 
     String[] months;
     ArrayAdapter <String> adapter;
@@ -29,7 +29,7 @@ public class EnterBills extends AppCompatActivity {
     EditText inputAmount;
     Spinner inputMonth;
     Button enterInfo;
-    HashMap<String, String> choices;
+    HashMap<String, Integer> choices;
 
     private FirebaseAuth mAuth;
 
@@ -52,7 +52,7 @@ public class EnterBills extends AppCompatActivity {
         choices = new HashMap<>();
 
         for (int i = 1; i < 13; i++) {
-            choices.put(months[i - 1], Integer.toString(i));
+            choices.put(months[i - 1], i);
         }
 
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, months);
@@ -68,6 +68,7 @@ public class EnterBills extends AppCompatActivity {
                     toastMessage("Enter an amount", 0);
                 }
                 else {
+                    // use the spinner string as key to get value - month as integer from hashmap...
                     month = choices.get(inputMonth.getSelectedItem().toString());
                     logData(v, month, billAmount);
                 }
@@ -75,12 +76,12 @@ public class EnterBills extends AppCompatActivity {
         });
     }
 
-    private void logData(View v, String month, String amount) {
+    private void logData(View v, int month, String amount) {
 
             String user_id = mAuth.getCurrentUser().getUid();
             DatabaseReference user_db = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id).child("Bills");
             Map newPost = new HashMap();
-            newPost.put(month, amount);
+            newPost.put(Integer.toString(month), amount);
             user_db.updateChildren(newPost);
 
             toastMessage("Bill Recorded Successfully", 0);
