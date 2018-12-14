@@ -20,7 +20,7 @@ public class EcoReminders extends AppCompatActivity {
         send_msg_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                appliances_nav();
+                sendMessage();
             }
         });
 
@@ -37,9 +37,10 @@ public class EcoReminders extends AppCompatActivity {
     public void setBill_nav() {
         Intent i = new Intent(this, SetBillReminder.class);
         startActivity(i);
+        finish();
     }
 
-    public void appliances_nav() {
+    public void sendMessage() {
         Intent intent = new Intent(this, MessageSender.class);
         startActivity(intent);
     }

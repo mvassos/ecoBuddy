@@ -104,34 +104,6 @@ public class BillsData extends AppCompatActivity {
                 for(DataSnapshot myDataSnapshot: dataSnapshot.child(uid).child("Bills").getChildren()){
                     //make x be 1-12 via more switch statements
                     monthVal = String.valueOf(myDataSnapshot.getKey());
-
-                    switch (monthVal){
-                        case "1": xD = new Date(2018,0,1);
-                            break;
-                        case "2": xD = new Date(2018,1,1);
-                            break;
-                        case "3": xD = new Date(2018,2,1);
-                            break;
-                        case "4": xD = new Date(2018,3,1);
-                            break;
-                        case "5": xD = new Date(2018,4,1);
-                            break;
-                        case "6": xD = new Date(2018,5,1);
-                            break;
-                        case "7": xD = new Date(2018,6,1);
-                            break;
-                        case "8": xD = new Date(2018,7,1);
-                            break;
-                        case "9": xD = new Date(2018,8,1);
-                            break;
-                        case "10": xD = new Date(2018,9,1);
-                            break;
-                        case "11": xD = new Date(2018,10,1);
-                            break;
-                        case "12": xD = new Date(2018,11,1);
-                            break;
-                    }
-
                     x = Integer.parseInt(monthVal);
                     y = Double.parseDouble(String.valueOf(myDataSnapshot.getValue()));
                     series.appendData(new DataPoint(x,y),true,12);

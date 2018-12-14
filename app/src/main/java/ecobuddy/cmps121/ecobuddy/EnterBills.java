@@ -29,6 +29,7 @@ public class EnterBills extends AppCompatActivity {
     EditText inputAmount;
     Spinner inputMonth;
     Button enterInfo;
+    HashMap<String, String> choices;
 
     private FirebaseAuth mAuth;
 
@@ -47,6 +48,13 @@ public class EnterBills extends AppCompatActivity {
         enterInfo = (Button) findViewById(R.id.button_trackBill);
 
         months = new String[]{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+
+        choices = new HashMap<>();
+
+        for (int i = 1; i < 13; i++) {
+            choices.put(months[i - 1], Integer.toString(i));
+        }
+
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, months);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         inputMonth.setAdapter(adapter);
@@ -60,44 +68,7 @@ public class EnterBills extends AppCompatActivity {
                     toastMessage("Enter an amount", 0);
                 }
                 else {
-                    switch (inputMonth.getSelectedItem().toString()) {
-                        case "Jan":
-                            month = "1";
-                            break;
-                        case "Feb":
-                            month = "2";
-                            break;
-                        case "Mar":
-                            month = "3";
-                            break;
-                        case "Apr":
-                            month = "4";
-                            break;
-                        case "May":
-                            month = "5";
-                            break;
-                        case "Jun":
-                            month = "6";
-                            break;
-                        case "Jul":
-                            month = "7";
-                            break;
-                        case "Aug":
-                            month = "8";
-                            break;
-                        case "Sep":
-                            month = "9";
-                            break;
-                        case "Oct":
-                            month = "10";
-                            break;
-                        case "Nov":
-                            month = "11";
-                            break;
-                        case "Dec":
-                            month = "12";
-                            break;
-                    }
+                    month = choices.get(inputMonth.getSelectedItem().toString());
                     logData(v, month, billAmount);
                 }
             }
