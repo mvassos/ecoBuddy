@@ -13,7 +13,7 @@ public class EcoReminders extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.ecoreminders_activity);
+        setContentView(R.layout.activity_eco_reminders);
 
 
         send_msg_btn = (Button) findViewById(R.id.send_message_btn);

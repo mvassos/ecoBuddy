@@ -1,20 +1,15 @@
 package ecobuddy.cmps121.ecobuddy;
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 public class DataAnalytics extends AppCompatActivity {
 
@@ -30,7 +25,7 @@ public class DataAnalytics extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.data_analytics_activity);
+        setContentView(R.layout.activity_data_analytics);
 
         mAuth = FirebaseAuth.getInstance();
         user_db = FirebaseDatabase.getInstance().getReference("Users");
