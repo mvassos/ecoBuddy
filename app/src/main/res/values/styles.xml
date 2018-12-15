@@ -9,4 +9,8 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="SplashTheme" parent="Base.Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:windowBackground">@drawable/backsplash</item>
+    </style>
+
 </resources>
