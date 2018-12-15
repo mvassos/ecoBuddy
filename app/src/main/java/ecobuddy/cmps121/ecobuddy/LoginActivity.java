@@ -3,10 +3,10 @@ package ecobuddy.cmps121.ecobuddy;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,7 +34,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private GoogleSignInClient mGoogleSignInClient;
     private FirebaseAuth mAuth;
-
+    FloatingActionButton fab;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +55,14 @@ public class LoginActivity extends AppCompatActivity {
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
         mAuth = FirebaseAuth.getInstance();
+        fab = findViewById(R.id.exit_fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                moveTaskToBack(true);
+            }
+        });
 
     }
 
@@ -69,7 +77,6 @@ public class LoginActivity extends AppCompatActivity {
     private void updateUI(FirebaseUser user){
         if(user != null){
             //if a user is already signed in!
-            Toast.makeText(this, "Welcome: " + user.getEmail(), Toast.LENGTH_LONG).show();
             toastMessage("Welcome " + user.getEmail(), 0);
             //only change activity to main once a login is complete
             Intent intent = new Intent(this, MainActivity.class);
