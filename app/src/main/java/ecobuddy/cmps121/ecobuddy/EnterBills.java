@@ -39,8 +39,6 @@ public class EnterBills extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_bills);
 
-        final String TAG = "billInput";
-
         mAuth = FirebaseAuth.getInstance();
 
         inputAmount = (EditText) findViewById(R.id.EditText_bill);

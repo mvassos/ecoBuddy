@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -15,15 +14,12 @@ public class DataAnalytics extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private DatabaseReference user_db;
-    private long miliSec;
-    private String TAG = "dataAnalytics";
     TextView time;
     Button showerButton;
     Button billsButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data_analytics);
 
@@ -45,7 +41,6 @@ public class DataAnalytics extends AppCompatActivity {
                 billData_nav();
             }
         });
-
     }
 
     public void showerData_nav() {

@@ -3,9 +3,6 @@ package ecobuddy.cmps121.ecobuddy;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.Toast;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -14,12 +11,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.jjoe64.graphview.DefaultLabelFormatter;
 import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
-import com.jjoe64.graphview.series.BarGraphSeries;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
-
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -30,10 +23,6 @@ public class BillsData extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private DatabaseReference user_db;
-
-    private final String TAG = "billsData";
-
-    SimpleDateFormat sdf = new SimpleDateFormat("MMM YY");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +41,7 @@ public class BillsData extends AppCompatActivity {
             public String formatLabel(double value, boolean isValueX) {
 
                 if(!isValueX && (value%1 ==0)){
-                    return "$"+super.formatLabel(value, isValueX);//sdf.format(new Date((long) value));
+                    return "$"+super.formatLabel(value, isValueX);
                 }
                 if(isValueX){
                     return super.formatLabel(value, isValueX);
@@ -60,9 +49,6 @@ public class BillsData extends AppCompatActivity {
                 return "";
             }
         });
-
-        //graph.getViewport().setScalable(true);
-        //graph.getViewport().setScrollable(true);
 
         graph.getGridLabelRenderer().setNumHorizontalLabels(12);
         graph.getGridLabelRenderer().setHumanRounding(false);
@@ -74,10 +60,6 @@ public class BillsData extends AppCompatActivity {
         graph.getViewport().setYAxisBoundsManual(true);
         graph.getViewport().setMinY(50);
         graph.getViewport().setMaxY(300);
-
-
-
-
     }
 
     @Override
@@ -86,6 +68,16 @@ public class BillsData extends AppCompatActivity {
         series = new LineGraphSeries<DataPoint>();
         graph.removeAllSeries();
         this.finish();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 
     protected void onStart() {
@@ -102,7 +94,6 @@ public class BillsData extends AppCompatActivity {
                 double y = 0;
 
                 for(DataSnapshot myDataSnapshot: dataSnapshot.child(uid).child("Bills").getChildren()){
-                    //make x be 1-12 via more switch statements
                     monthVal = String.valueOf(myDataSnapshot.getKey());
                     x = Integer.parseInt(monthVal);
                     y = Double.parseDouble(String.valueOf(myDataSnapshot.getValue()));

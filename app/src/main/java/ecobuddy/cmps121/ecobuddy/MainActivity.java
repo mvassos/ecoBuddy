@@ -35,31 +35,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.SEND_SMS)
-                != PackageManager.PERMISSION_GRANTED) {
-
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                    Manifest.permission.SEND_SMS)) {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.SEND_SMS)) {
             } else {
-                ActivityCompat.requestPermissions(this,
-                        new String[]{Manifest.permission.SEND_SMS},
-                        0);
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.SEND_SMS}, 0);
             }
-        } else {
-            // Permission has already been granted
         }
 
-
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.WRITE_CALENDAR)
-                != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                    Manifest.permission.WRITE_CALENDAR)) {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_CALENDAR) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_CALENDAR)) {
             } else {
-                ActivityCompat.requestPermissions(this,
-                        new String[]{Manifest.permission.WRITE_CALENDAR},
-                        0);
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_CALENDAR}, 0);
             }
         }
 

@@ -3,8 +3,6 @@ package ecobuddy.cmps121.ecobuddy;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -15,7 +13,6 @@ import com.jjoe64.graphview.DefaultLabelFormatter;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.BarGraphSeries;
 import com.jjoe64.graphview.series.DataPoint;
-import com.jjoe64.graphview.series.LineGraphSeries;
 
 public class ShowerData extends AppCompatActivity {
 
@@ -27,8 +24,6 @@ public class ShowerData extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DatabaseReference user_db;
 
-    private final String TAG = "showerData";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,23 +34,16 @@ public class ShowerData extends AppCompatActivity {
 
         graph = findViewById(R.id.GraphView_shower);
         series = new BarGraphSeries<>();
-
-
         graph.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter(){
 
             @Override
             public String formatLabel(double value, boolean isValueX) {
-
                 if(!isValueX){
                     return super.formatLabel(value, isValueX)+"sec.";
                 }
-
-                    return super.formatLabel(value, isValueX);
-
+                return super.formatLabel(value, isValueX);
             }
         });
-
-
     }
 
     @Override

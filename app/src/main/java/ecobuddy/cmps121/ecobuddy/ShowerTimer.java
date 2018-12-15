@@ -33,8 +33,6 @@ public class ShowerTimer extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DatabaseReference user_db;
 
-    private final String TAG = "showerTimer";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,8 +89,6 @@ public class ShowerTimer extends AppCompatActivity {
                 throw databaseError.toException();
             }
         });
-
-
     }
 
     public void startChronometer(View v){
@@ -142,6 +138,7 @@ public class ShowerTimer extends AppCompatActivity {
             toastMessage("Time Recorded Successfully", 1);
         }
     }
+
     private void toastMessage(String msg, int len) {
         Toast toast = Toast.makeText(this, msg, len);
         View view = toast.getView();
